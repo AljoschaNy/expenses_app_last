@@ -43,7 +43,6 @@ class MyHomePage extends StatelessWidget {
               Card(
                 color: Colors.blue,
                 child: Container(
-                  margin: EdgeInsets.all(10),
                   width: double.infinity,
                   height: 100,
                   child: Text("Chart"),
@@ -54,15 +53,49 @@ class MyHomePage extends StatelessWidget {
                 children: transactions.map((tx) {
                   return Card(
                     child: Container(
-                      margin: EdgeInsets.all(10),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(tx.amount.toString()),
+                          Container(
+                            margin: EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 15,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 10,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.purple,
+                                width: 2,
+                              ),
+                            ),
+                            child: Text(
+                              "\$" + tx.amount.toString(),
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.purple,
+                              ),
+                            ),
+                          ),
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(tx.title),
-                              Text(tx.purchaseDate.toString()),
+                              Text(
+                                tx.title,
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                tx.purchaseDate.toString(),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey,
+                                ),
+                              ),
                             ],
                           )
                         ],
