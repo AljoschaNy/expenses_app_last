@@ -10,6 +10,15 @@ class Chart extends StatelessWidget {
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
+      double totalSum;
+
+      for (var i = 0; i < recentTransactions.length; i++) {
+        if (recentTransactions[i].purchaseDate.day == weekDay.day &&
+            recentTransactions[i].purchaseDate.month == weekDay.month &&
+            recentTransactions[i].purchaseDate.year == weekDay.year) {
+          totalSum += recentTransactions[i].amount;
+        }
+      }
 
       return {"day": DateFormat.E(weekDay), "amount": 9.99};
     });
